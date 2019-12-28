@@ -1,4 +1,7 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import static org.fest.assertions.api.Assertions.assertThat;
 public class MarsRoverTest {
 
@@ -73,5 +76,18 @@ public class MarsRoverTest {
         String mission = "10,10,5,5,E,M,L,M,R";
         String position = roverController.execute(mission);
         assertThat(position).isEqualTo("66E");
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void should_warning_when_out() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("out of space");
+
+        Area area = new Area(10,10);
+        Rover rover = new Rover();
+        rover.land(area,20,30,Rover.EAST);
     }
 }

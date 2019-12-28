@@ -8,6 +8,11 @@ public class Rover {
     private String direction;
 
     public void land(Area area, int xPosition, int yPosition, String direction) {
+        if(!area.containsPointWithX(xPosition)){
+            throw new IllegalArgumentException("out of space");
+        } else if(!area.containsPointWithY(yPosition)){
+            throw new IllegalArgumentException("out of space");
+        }
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.direction = direction;
