@@ -24,6 +24,6 @@ public class RoverController {
             }
 
         }
-        return null;
+        return rover.getPosition();
     }
 }
