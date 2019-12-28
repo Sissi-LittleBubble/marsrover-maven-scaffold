@@ -8,6 +8,7 @@ public class Area {
     }
 
     public boolean containsPointWithX(int xPosition) {
+        //位置
         if ((xPosition + 1) > width) {
             return false;
         }
